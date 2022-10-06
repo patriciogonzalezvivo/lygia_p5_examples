@@ -18,8 +18,9 @@ void setup() {
   img_blueNoise = loadImage("noise_blue.png");
   
   // Examples
-  shdr = loadRecursiveShader("animation_easing.frag");
+  //shdr = loadRecursiveShader("animation_easing.frag");
   //shdr = loadRecursiveShader("color_dither.frag");
+  shdr = loadRecursiveShader("draw_digits.frag");
   //shdr = loadRecursiveShader("filter_edge2D.frag");
 }
 
