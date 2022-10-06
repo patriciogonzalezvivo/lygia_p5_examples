@@ -21,8 +21,9 @@ void setup() {
   //shdr = loadRecursiveShader("animation_easing.frag");
   //shdr = loadRecursiveShader("color_dither.frag");
   //shdr = loadRecursiveShader("draw_digits.frag");
-  shdr = loadRecursiveShader("filter_bilateralBlur2D.frag");
+  //shdr = loadRecursiveShader("filter_bilateralBlur2D.frag");
   //shdr = loadRecursiveShader("filter_edge2D.frag");
+  shdr = loadRecursiveShader("filter_kuwahara2D.frag");
 }
 
 void draw() {
