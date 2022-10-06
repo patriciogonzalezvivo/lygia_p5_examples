@@ -6,16 +6,30 @@
  * Press the mouse to switch between the custom and default shader.
  */
 
-PShader shader;  
-PImage img;
+PShader shdr;  
+PImage img_danny;
+PImage img_blueNoise;
 
 void setup() {
   size(512, 512, P2D);
-  img = loadImage("danny.png");      
-  shader = loadRecursiveShader("filter_edge2D.frag");
+  
+  // Assets
+  img_danny = loadImage("danny.png");
+  img_blueNoise = loadImage("noise_blue.png");
+  
+  // Examples
+  shdr = loadRecursiveShader("color_dither.frag");
+  //shdr = loadRecursiveShader("filter_edge2D.frag");
 }
 
 void draw() {
-  shader(shader);
-  image(img, 0, 0, 512, 512);
+  shader(shdr);
+  
+  // Uniforms
+  shdr.set("u_noiseTex", img_blueNoise);
+  shdr.set("u_resolution", float(width), float(height));
+  shdr.set("u_mouse", float(mouseX), float(mouseY));
+  shdr.set("u_time", millis() / 1000.0);
+  
+  image(img_danny, 0, 0, 512, 512);
 }
