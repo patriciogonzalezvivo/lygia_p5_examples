@@ -26,8 +26,9 @@ void setup() {
   //shdr = loadRecursiveShader("filter_gaussianBlur2D.frag");
   //shdr = loadRecursiveShader("filter_noiseBlur2D.frag");
   //shdr = loadRecursiveShader("filter_radialBlur2D.frag");
-  shdr = loadRecursiveShader("filter_sharpen2D.frag");
+  //shdr = loadRecursiveShader("filter_sharpen2D.frag");
   //shdr = loadRecursiveShader("filter_edge2D.frag");
+  shdr = loadRecursiveShader("filter_median2D.frag");
   //shdr = loadRecursiveShader("filter_kuwahara2D.frag");
 }
 
