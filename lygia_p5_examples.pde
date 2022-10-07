@@ -18,7 +18,7 @@ void setup() {
   img_blueNoise = loadImage("noise_blue.png");
   
   // Examples
-  //shdr = loadRecursiveShader("animation_easing.frag");
+  shdr = loadRecursiveShader("animation_easing.frag");
   //shdr = loadRecursiveShader("color_dither.frag");
   //shdr = loadRecursiveShader("draw_digits.frag");
   //shdr = loadRecursiveShader("filter_bilateralBlur2D.frag");
@@ -29,8 +29,19 @@ void setup() {
   //shdr = loadRecursiveShader("filter_sharpen2D.frag");
   //shdr = loadRecursiveShader("filter_edge2D.frag");
   //shdr = loadRecursiveShader("filter_median2D.frag");
-  shdr = loadRecursiveShader("filter_laplacian2D.frag");
+  //shdr = loadRecursiveShader("filter_laplacian2D.frag");
   //shdr = loadRecursiveShader("filter_kuwahara2D.frag");
+  //shdr = loadRecursiveShader("generative_random.frag");
+  //shdr = loadRecursiveShader("generative_cnoise.frag");
+  //shdr = loadRecursiveShader("generative_snoise.frag");
+  //shdr = loadRecursiveShader("generative_pnoise.frag");
+  //shdr = loadRecursiveShader("generative_noised.frag");
+  //shdr = loadRecursiveShader("generative_curl.frag");
+  //shdr = loadRecursiveShader("generative_fbm.frag");
+  //shdr = loadRecursiveShader("generative_voronoi.frag");
+  //shdr = loadRecursiveShader("generative_voronoise.frag");
+  //shdr = loadRecursiveShader("generative_worley.frag");
+  
 }
 
 void draw() {
