@@ -1,5 +1,6 @@
 #ifdef GL_ES
 precision mediump float;
+precision mediump int;
 #endif
 
 #define PROCESSING_TEXTURE_SHADER
@@ -13,9 +14,8 @@ uniform float       u_time;
 varying vec4        vertColor;
 varying vec4        vertTexCoord;
 
-#define GAUSSIANBLUR_2D
-#define GAUSSIANBLUR_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.01), vec2(0.99)))
-#include "lygia/filter/gaussianBlur.glsl"
+#define NOISEBLUR_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.02), vec2(0.98)))
+#include "lygia/filter/noiseBlur.glsl"
 
 #include "lygia/draw/digits.glsl"
 
@@ -25,11 +25,11 @@ void main (void) {
     vec2 st = vertTexCoord.st;
 
     float ix = floor(st.x * 5.0);
-    float kernel_size = max(1.0, ix * 4.0);
+    float radius = max(1.0, ix * 4.0);
 
-    color += gaussianBlur(texture, st, pixel, int(kernel_size)).rgb;
+    color += noiseBlur(texture, st, pixel, radius).rgb;
 
-    color += digits(st - vec2(ix/5.0 + 0.01, 0.01), kernel_size, 0.0);
+    color += digits(st - vec2(ix/5.0 + 0.01, 0.01), radius, 0.0);
     color -= step(.99, fract(st.x * 5.0));
 
     gl_FragColor = vec4(color,1.0);

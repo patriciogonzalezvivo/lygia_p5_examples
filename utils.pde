@@ -2,10 +2,8 @@ import java.io.File;
 import java.nio.file.Path;
 
 void loadSource(String current_folder, String filename, ArrayList<String> source) {
-  println("search for", filename, "in", current_folder);
   File file = new File(current_folder,filename);
   String url = file.getPath().substring(1);
-  println("open", url);
   String[] lines = loadStrings(url); 
   
   for (int i = 0; i < lines.length; i++) {
@@ -20,6 +18,8 @@ void loadSource(String current_folder, String filename, ArrayList<String> source
     }
   }
 }
+
+
 
 PShader loadRecursiveShader(String fragFilename) {
   ArrayList<String> src = new ArrayList<String>();
