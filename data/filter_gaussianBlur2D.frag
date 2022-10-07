@@ -1,6 +1,3 @@
-#ifdef GL_ES
-precision mediump float;
-#endif
 
 #define PROCESSING_TEXTURE_SHADER
 
@@ -13,9 +10,9 @@ uniform float       u_time;
 varying vec4        vertColor;
 varying vec4        vertTexCoord;
 
-#define BOXBLUR_2D
-#define BOXBLUR_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.01), vec2(0.99)))
-#include "lygia/filter/boxBlur.glsl"
+#define GAUSSIANBLUR_2D
+#define GAUSSIANBLUR_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.01), vec2(0.99)))
+#include "lygia/filter/gaussianBlur.glsl"
 
 #include "lygia/draw/digits.glsl"
 
@@ -27,7 +24,7 @@ void main (void) {
     float ix = floor(st.x * 5.0);
     float kernel_size = max(1.0, ix * 4.0);
 
-    color += boxBlur(texture, st, pixel, int(kernel_size)).rgb;
+    color += gaussianBlur(texture, st, pixel, int(kernel_size)).rgb;
 
     color += digits(st - vec2(ix/5.0 + 0.01, 0.01), kernel_size, 0.0);
     color -= step(.99, fract(st.x * 5.0));
