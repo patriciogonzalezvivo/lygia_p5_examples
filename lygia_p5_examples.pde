@@ -8,17 +8,20 @@
 
 PShader shdr;  
 PImage img_danny;
+PImage img_sprite;
 PImage img_blueNoise;
 
 void setup() {
   size(512, 512, P2D);
   
   // Assets
-  img_danny = loadImage("danny.png");
-  img_blueNoise = loadImage("noise_blue.png");
+  img_danny = loadImage("imgs/danny.png");
+  img_sprite = loadImage("imgs/sprite_megaman.png");
+  img_blueNoise = loadImage("imgs/noise_blue.png");
   
   // Examples
-  shdr = loadRecursiveShader("animation_easing.frag");
+  //shdr = loadRecursiveShader("animation_easing.frag");
+  shdr = loadRecursiveShader("animation_sprite.frag");
   //shdr = loadRecursiveShader("color_dither.frag");
   //shdr = loadRecursiveShader("draw_digits.frag");
   //shdr = loadRecursiveShader("filter_bilateralBlur2D.frag");
@@ -49,6 +52,7 @@ void draw() {
   
   // Uniforms
   shdr.set("u_noiseTex", img_blueNoise);
+  shdr.set("u_spriteTex", img_sprite);
   shdr.set("u_resolution", float(width), float(height));
   shdr.set("u_mouse", float(mouseX), float(mouseY));
   shdr.set("u_time", millis() / 1000.0);
