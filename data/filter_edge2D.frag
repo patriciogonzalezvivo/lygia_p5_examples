@@ -11,7 +11,8 @@ uniform vec2 texOffset;
 varying vec4 vertColor;
 varying vec4 vertTexCoord;
 
-#define EDGE_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.02), vec2(0.98))).r
+#include "lygia/sample/clamp2edge.glsl"
+#define EDGE_SAMPLER_FNC(TEX, UV) sampleClamp2edge(TEX, UV).r
 #include "lygia/filter/edge.glsl"
 #include "lygia/draw/digits.glsl"
 #include "lygia/math/saturate.glsl"

@@ -14,7 +14,8 @@ uniform float       u_time;
 varying vec4        vertColor;
 varying vec4        vertTexCoord;
 
-#define KUWAHARA_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.01), vec2(0.99)))
+#include "lygia/sample/clamp2edge.glsl"
+#define KUWAHARA_SAMPLER_FNC(TEX, UV) sampleClamp2edge(TEX, UV)
 #include "lygia/filter/kuwahara.glsl"
 
 #include "lygia/draw/digits.glsl"

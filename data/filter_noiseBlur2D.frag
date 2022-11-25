@@ -14,7 +14,8 @@ uniform float       u_time;
 varying vec4        vertColor;
 varying vec4        vertTexCoord;
 
-#define NOISEBLUR_SAMPLER_FNC(POS_UV) texture2D(tex, clamp(POS_UV, vec2(0.02), vec2(0.98)))
+#include "lygia/sample/clamp2edge.glsl"
+#define NOISEBLUR_SAMPLER_FNC(TEX, UV) sampleClamp2edge(TEX, UV)
 #include "lygia/filter/noiseBlur.glsl"
 
 #include "lygia/draw/digits.glsl"
